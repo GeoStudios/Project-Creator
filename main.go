@@ -17,6 +17,9 @@ func main() {
 	fmt.Println("  { 4 } Go")
 	fmt.Println("  { 5 } C")
 	fmt.Println("  { 6 } C++")
+	fmt.Println("  { 7 } Carbon")
+	fmt.Println("  { 8 } Rust")
+
 	fmt.Println("")
 	fmt.Println("Choose A Language:")
 
@@ -46,6 +49,12 @@ func main() {
 	}
 	if lang == "6" {
 		gens.GenerateCpp(name, ver)
+	}
+	if lang == "7" {
+		gens.GenerateCarbon(name, ver)
+	}
+	if lang == "8" {
+		gens.GenerateRust(name, ver)
 	}
 
 }
