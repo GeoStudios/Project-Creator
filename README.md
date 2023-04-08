@@ -1,7 +1,7 @@
 # Project-Creator
 
 ## Build
-To build the program intall golang then run the bat file named build
+To build the program intall golang then run the bat file named build <br>
 
 ## Supported Languages
 
