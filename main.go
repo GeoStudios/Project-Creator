@@ -11,11 +11,12 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Supported Languages")
-	fmt.Println("  { 1 } Python")
-	fmt.Println("  { 2 } Java")
-	fmt.Println("  { 3 } Go")
-	fmt.Println("  { 4 } C++")
-	fmt.Println("  { 5 } Website")
+	fmt.Println("  { 1 } Website")
+	fmt.Println("  { 2 } Python")
+	fmt.Println("  { 3 } Java")
+	fmt.Println("  { 4 } Go")
+	fmt.Println("  { 5 } C")
+	fmt.Println("  { 6 } C++")
 	fmt.Println("")
 	fmt.Println("Choose A Language:")
 
@@ -29,19 +30,22 @@ func main() {
 	ver := scanner.Text()
 
 	if lang == "1" {
-		gens.GeneratePython(name, ver)
+		gens.GenerateWebsite(name, ver)
 	}
 	if lang == "2" {
-		gens.GenerateJava(name, ver)
+		gens.GeneratePython(name, ver)
 	}
 	if lang == "3" {
-		gens.GenerateGolang(name, ver)
+		gens.GenerateJava(name, ver)
 	}
 	if lang == "4" {
-		gens.GenerateCpp(name, ver)
+		gens.GenerateGolang(name, ver)
 	}
 	if lang == "5" {
-		gens.GenerateWebsite(name, ver)
+		gens.GenerateC(name, ver)
+	}
+	if lang == "6" {
+		gens.GenerateCpp(name, ver)
 	}
 
 }

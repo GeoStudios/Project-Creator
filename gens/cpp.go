@@ -26,21 +26,5 @@ int main() {
 	return 0;
 }`)
 	pf.Close()
-	// 	makeF, _ := os.Create("Makefile")
-	// 	makeF.WriteString(`exec = hello.exe
-	// sources = $(wildcard src/*.cpp)
-	// objects = $(sources:.cpp=.o)
-	// flags = -g
-
-	// $(exec): $(objects)
-	// 	gcc $(objects) $(flags) -o $(exec)
-
-	// %.o: %.cpp include/%.h
-	// 	gcc -c $(flags) $< -o $@
-
-	// clean:
-	// 	-rm *.exe
-	// 	-rm *.o
-	// 	-rm src/*.o`)
 
 }
