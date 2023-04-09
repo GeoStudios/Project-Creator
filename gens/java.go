@@ -66,7 +66,7 @@ After the jar is created it will delete the srcOut unless you change the KeepSrc
 	pf.WriteString(`public class ` + name + ` {
 
 	public static void main(String[] args) {
-		System.out.println(args)
+		System.out.println(args);
 	
 		System.out.println("Hello World");
 	
