@@ -9,18 +9,3 @@ First Thing when you open the program it gives you 10 options choose one like Py
 ## Downloads
 
 [Download (latest)](https://github.com/GeoStudios/Downloads/releases/tag/ProjCreator1)
-
-<!-- ### Website
-### Python
-### Java
-### Golang
-### C
-### C++
-### Carbon
-### Rust
-### PHP
-### NodeJs -->
-
-<!-- 
-## Build
-### To build the program intall golang then run the bat file named build -->
