@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func GeneratePython(name, ver string) {
+func GeneratePhp(name, ver string) {
 
 	os.Mkdir(name, 0700)
 	os.Chdir(name)
@@ -15,20 +15,19 @@ func GeneratePython(name, ver string) {
 	"ProjectVer":"$pv"
 }`, "$pn", name), "$pv", ver))
 	pj.Close()
-
 	os.Mkdir("src", 0700)
 	os.Chdir("src")
-	pf, _ := os.Create(name + ".py")
-	pf.WriteString(`import sys
+	pf, _ := os.Create(name + ".php")
+	pf.WriteString(`<!DOCTYPE html>
+	<html>
+	<body>
 	
-def main():
-	OsArgs = sys.argv
-
-	print(OsArgs)
+	<?php
+	echo "My first PHP script!";
+	?>
 	
-	print("Hello World")
-	
-main()`)
+	</body>
+	</html>`)
 	pf.Close()
 
 }

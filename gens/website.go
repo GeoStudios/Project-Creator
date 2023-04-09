@@ -38,7 +38,10 @@ func GenerateWebsite(name, ver string) {
 	</html>`, "$Doc", name))
 	pf.Close()
 	ps, _ := os.Create("script.js")
-	ps.WriteString(`console.log("Hello World")`)
+	ps.WriteString(`function main(){
+	console.log("Hello World")
+}
+main()`)
 	ps.Close()
 	pc, _ := os.Create("style.css")
 	pc.WriteString(`body{background-color: black; color: white; display: flex; justify-content: center;}`)

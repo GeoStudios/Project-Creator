@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func GeneratePython(name, ver string) {
+func GenerateNodejs(name, ver string) {
 
 	os.Mkdir(name, 0700)
 	os.Chdir(name)
@@ -15,20 +15,16 @@ func GeneratePython(name, ver string) {
 	"ProjectVer":"$pv"
 }`, "$pn", name), "$pv", ver))
 	pj.Close()
-
+	ba, _ := os.Create("run.bat")
+	ba.WriteString(`node ./src/` + name + ".js")
+	ba.Close()
 	os.Mkdir("src", 0700)
 	os.Chdir("src")
-	pf, _ := os.Create(name + ".py")
-	pf.WriteString(`import sys
-	
-def main():
-	OsArgs = sys.argv
-
-	print(OsArgs)
-	
-	print("Hello World")
-	
-main()`)
+	pf, _ := os.Create(name + ".js")
+	pf.WriteString(`function main(){
+		console.log("Hello World")
+	}
+	main()`)
 	pf.Close()
 
 }

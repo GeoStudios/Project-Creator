@@ -19,6 +19,8 @@ func main() {
 	fmt.Println("  { 6 } C++")
 	fmt.Println("  { 7 } Carbon")
 	fmt.Println("  { 8 } Rust")
+	fmt.Println("  { 9 } PHP")
+	fmt.Println("  { 10 } NodeJs")
 
 	fmt.Println("")
 	fmt.Println("Choose A Language:")
@@ -55,6 +57,12 @@ func main() {
 	}
 	if lang == "8" {
 		gens.GenerateRust(name, ver)
+	}
+	if lang == "9" {
+		gens.GeneratePhp(name, ver)
+	}
+	if lang == "10" {
+		gens.GenerateNodejs(name, ver)
 	}
 
 }
