@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func GenerateC(name, ver string) {
+func GenerateObjC(name, ver string) {
 
 	os.Mkdir(name, 0700)
 	os.Chdir(name)
@@ -17,17 +17,16 @@ func GenerateC(name, ver string) {
 	"ProjectVer":"$pv"
 }`, "$pn", name), "$pv", ver))
 	pj.Close()
-
 	makeF, _ := os.Create("Makefile")
 	makeF.WriteString(`exec = hello.exe
-sources = $(wildcard src/*.c)
+sources = $(wildcard src/*.m)
 objects = $(sources:.c=.o)
-flags = -g
+flags = -O0 -g
 
 $(exec): $(objects)
 	gcc $(objects) $(flags) -o $(exec)
 
-%.o: %.c include/%.h
+%.o: %.cpp include/%.hh
 	gcc -c $(flags) $< -o $@
 
 clean:
@@ -37,14 +36,24 @@ clean:
 
 	os.Mkdir("src", 0700)
 	os.Chdir("src")
-	pf, _ := os.Create(name + ".c")
-	pf.WriteString(`#include <stdio.h>
+	pf, _ := os.Create(name + ".m")
+	pf.WriteString(`@interface SampleClass:NSObject
+- (void)sampleMethod;
+@end
 
-int main(int argc, char const *argv[])
-{
-	printf(argc);
-	printf("Hello World");
-	return 0;
+@implementation SampleClass
+
+- (void)sampleMethod {
+   NSLog(@"Hello, World! \n");
+}
+
+@end
+
+int main() {
+   /* my first program in Objective-C */
+   SampleClass *sampleClass = [[SampleClass alloc]init];
+   [sampleClass sampleMethod];
+   return 0;
 }`)
 	pf.Close()
 

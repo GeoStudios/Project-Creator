@@ -23,6 +23,8 @@ func main() {
 	fmt.Println("  { 8 } Rust")
 	fmt.Println("  { 9 } PHP")
 	fmt.Println("  { 10 } NodeJs")
+	fmt.Println("  { 11 } Objective-C")
+	fmt.Println("  { 12 } Asm")
 
 	fmt.Println("")
 	fmt.Println("Choose A Language:")
@@ -65,6 +67,12 @@ func main() {
 	}
 	if lang == "10" {
 		gens.GenerateNodejs(name, ver)
+	}
+	if lang == "11" {
+		gens.GenerateObjC(name, ver)
+	}
+	if lang == "12" {
+		gens.GenerateAsm(name, ver)
 	}
 
 }
