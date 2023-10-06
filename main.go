@@ -10,69 +10,40 @@ import (
 )
 
 func main() {
+	languages := map[string]func(string, string){
+		"1":  gens.GenerateWebsite,
+		"2":  gens.GeneratePython,
+		"3":  gens.GenerateJava,
+		"4":  gens.GenerateGolang,
+		"5":  gens.GenerateC,
+		"6":  gens.GenerateCpp,
+		"7":  gens.GenerateCarbon,
+		"8":  gens.GenerateRust,
+		"9":  gens.GeneratePhp,
+		"10": gens.GenerateNodejs,
+		"11": gens.GenerateObjC,
+		"12": gens.GenerateAsm,
+	}
 
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Supported Languages")
-	fmt.Println("  { 1 } Website")
-	fmt.Println("  { 2 } Python")
-	fmt.Println("  { 3 } Java")
-	fmt.Println("  { 4 } Go")
-	fmt.Println("  { 5 } C")
-	fmt.Println("  { 6 } C++")
-	fmt.Println("  { 7 } Carbon")
-	fmt.Println("  { 8 } Rust")
-	fmt.Println("  { 9 } PHP")
-	fmt.Println("  { 10 } NodeJs")
-	fmt.Println("  { 11 } Objective-C")
-	fmt.Println("  { 12 } Asm")
+	for lang, _ := range languages {
+		fmt.Printf("  { %s } %s\n", lang, gens.GetLanguageName(lang))
+	}
 
-	fmt.Println("")
-	fmt.Println("Choose A Language:")
-
+	fmt.Println("\nChoose A Language:")
 	scanner.Scan()
 	lang := scanner.Text()
-	fmt.Println("Project Name:")
-	scanner.Scan()
-	name := scanner.Text()
-	fmt.Println("Project Version:")
-	scanner.Scan()
-	ver := scanner.Text()
 
-	if lang == "1" {
-		gens.GenerateWebsite(name, ver)
+	if generator, exists := languages[lang]; exists {
+		fmt.Println("Project Name:")
+		scanner.Scan()
+		name := scanner.Text()
+		fmt.Println("Project Version:")
+		scanner.Scan()
+		ver := scanner.Text()
+		generator(name, ver)
+	} else {
+		fmt.Println("Invalid language selection.")
 	}
-	if lang == "2" {
-		gens.GeneratePython(name, ver)
-	}
-	if lang == "3" {
-		gens.GenerateJava(name, ver)
-	}
-	if lang == "4" {
-		gens.GenerateGolang(name, ver)
-	}
-	if lang == "5" {
-		gens.GenerateC(name, ver)
-	}
-	if lang == "6" {
-		gens.GenerateCpp(name, ver)
-	}
-	if lang == "7" {
-		gens.GenerateCarbon(name, ver)
-	}
-	if lang == "8" {
-		gens.GenerateRust(name, ver)
-	}
-	if lang == "9" {
-		gens.GeneratePhp(name, ver)
-	}
-	if lang == "10" {
-		gens.GenerateNodejs(name, ver)
-	}
-	if lang == "11" {
-		gens.GenerateObjC(name, ver)
-	}
-	if lang == "12" {
-		gens.GenerateAsm(name, ver)
-	}
-
 }
